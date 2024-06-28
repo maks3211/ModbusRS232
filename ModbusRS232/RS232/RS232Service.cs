@@ -32,7 +32,7 @@ namespace ModbusRS232.RS232
         }
         public string StringToHex(String input)
         {
-            string hex = "0123456789abcdef "; /*na końcu spacja jako hack na linq*/
+            string hex = "0123456789abcdef ";
             string str = String.Concat(
                 input
                     .Select(ch => (int)ch)

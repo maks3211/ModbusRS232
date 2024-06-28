@@ -59,6 +59,16 @@
             label2 = new Label();
             label1 = new Label();
             modBusTab = new TabPage();
+            label17 = new Label();
+            label16 = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label11 = new Label();
+            comboBox5 = new ComboBox();
+            comboBox4 = new ComboBox();
+            comboBox3 = new ComboBox();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
             button1 = new Button();
             controlTab.SuspendLayout();
             rs232Tab.SuspendLayout();
@@ -84,6 +94,7 @@
             controlTab.Size = new Size(984, 598);
             controlTab.SizeMode = TabSizeMode.FillToRight;
             controlTab.TabIndex = 1;
+            controlTab.Selecting += controlTab_Selecting_1;
             // 
             // rs232Tab
             // 
@@ -171,7 +182,6 @@
             // 
             // rsResponseBox
             // 
-            rsResponseBox.Enabled = false;
             rsResponseBox.Location = new Point(297, 6);
             rsResponseBox.Multiline = true;
             rsResponseBox.Name = "rsResponseBox";
@@ -220,6 +230,7 @@
             rstimeoutBox.Name = "rstimeoutBox";
             rstimeoutBox.Size = new Size(121, 29);
             rstimeoutBox.TabIndex = 18;
+            rstimeoutBox.ValueMember = "Key";
             // 
             // rsparityBox
             // 
@@ -231,6 +242,7 @@
             rsparityBox.Name = "rsparityBox";
             rsparityBox.Size = new Size(121, 29);
             rsparityBox.TabIndex = 17;
+            rsparityBox.ValueMember = "Key";
             // 
             // rstypeBox
             // 
@@ -242,6 +254,7 @@
             rstypeBox.Name = "rstypeBox";
             rstypeBox.Size = new Size(121, 29);
             rstypeBox.TabIndex = 16;
+            rstypeBox.ValueMember = "Key";
             // 
             // rscontrolBox
             // 
@@ -253,6 +266,7 @@
             rscontrolBox.Name = "rscontrolBox";
             rscontrolBox.Size = new Size(121, 29);
             rscontrolBox.TabIndex = 15;
+            rscontrolBox.ValueMember = "Key";
             // 
             // rsportBox
             // 
@@ -260,10 +274,11 @@
             rsportBox.DropDownStyle = ComboBoxStyle.DropDownList;
             rsportBox.Font = new Font("Segoe UI", 12F);
             rsportBox.FormattingEnabled = true;
-            rsportBox.Location = new Point(137, 190);
+            rsportBox.Location = new Point(137, 30);
             rsportBox.Name = "rsportBox";
             rsportBox.Size = new Size(121, 29);
             rsportBox.TabIndex = 14;
+            rsportBox.ValueMember = "Key";
             // 
             // rsterminatorBox
             // 
@@ -288,6 +303,7 @@
             rsdataBitsBox.Name = "rsdataBitsBox";
             rsdataBitsBox.Size = new Size(121, 29);
             rsdataBitsBox.TabIndex = 12;
+            rsdataBitsBox.ValueMember = "Key";
             // 
             // rsstopBitBox
             // 
@@ -299,6 +315,7 @@
             rsstopBitBox.Name = "rsstopBitBox";
             rsstopBitBox.Size = new Size(121, 29);
             rsstopBitBox.TabIndex = 11;
+            rsstopBitBox.ValueMember = "Key";
             // 
             // rsSpeedBox
             // 
@@ -306,10 +323,11 @@
             rsSpeedBox.DropDownStyle = ComboBoxStyle.DropDownList;
             rsSpeedBox.Font = new Font("Segoe UI", 12F);
             rsSpeedBox.FormattingEnabled = true;
-            rsSpeedBox.Location = new Point(137, 30);
+            rsSpeedBox.Location = new Point(137, 190);
             rsSpeedBox.Name = "rsSpeedBox";
             rsSpeedBox.Size = new Size(121, 29);
             rsSpeedBox.TabIndex = 10;
+            rsSpeedBox.ValueMember = "Key";
             rsSpeedBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label6
@@ -345,18 +363,18 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(22, 230);
+            label7.Font = new Font("Segoe UI", 10F);
+            label7.Location = new Point(6, 236);
             label7.Name = "label7";
-            label7.Size = new Size(72, 21);
+            label7.Size = new Size(131, 19);
             label7.TabIndex = 6;
-            label7.Text = "Kontrola:";
+            label7.Text = "Kontrola przepływu:";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(22, 190);
+            label5.Location = new Point(22, 30);
             label5.Name = "label5";
             label5.Size = new Size(41, 21);
             label5.TabIndex = 4;
@@ -386,11 +404,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(22, 30);
+            label2.Location = new Point(22, 190);
             label2.Name = "label2";
-            label2.Size = new Size(76, 21);
+            label2.Size = new Size(77, 21);
             label2.TabIndex = 1;
-            label2.Text = "Prędkość:";
+            label2.Text = "Szybkość:";
             label2.Click += label2_Click;
             // 
             // label1
@@ -406,6 +424,16 @@
             // 
             // modBusTab
             // 
+            modBusTab.Controls.Add(label17);
+            modBusTab.Controls.Add(label16);
+            modBusTab.Controls.Add(label15);
+            modBusTab.Controls.Add(label14);
+            modBusTab.Controls.Add(label11);
+            modBusTab.Controls.Add(comboBox5);
+            modBusTab.Controls.Add(comboBox4);
+            modBusTab.Controls.Add(comboBox3);
+            modBusTab.Controls.Add(comboBox1);
+            modBusTab.Controls.Add(comboBox2);
             modBusTab.Controls.Add(button1);
             modBusTab.Location = new Point(4, 24);
             modBusTab.Name = "modBusTab";
@@ -415,9 +443,120 @@
             modBusTab.Text = "Modbus";
             modBusTab.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Enabled = false;
+            label17.Font = new Font("Segoe UI", 12F);
+            label17.Location = new Point(27, 81);
+            label17.Name = "label17";
+            label17.Size = new Size(41, 21);
+            label17.TabIndex = 22;
+            label17.Text = "Port:";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 12F);
+            label16.Location = new Point(27, 122);
+            label16.Name = "label16";
+            label16.Size = new Size(73, 21);
+            label16.TabIndex = 21;
+            label16.Text = "Prędkość";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 12F);
+            label15.Location = new Point(27, 174);
+            label15.Name = "label15";
+            label15.Size = new Size(109, 21);
+            label15.TabIndex = 20;
+            label15.Text = "Typ transmisji:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 12F);
+            label14.Location = new Point(21, 224);
+            label14.Name = "label14";
+            label14.Size = new Size(115, 21);
+            label14.TabIndex = 19;
+            label14.Text = "Timeout znaku:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F);
+            label11.Location = new Point(27, 35);
+            label11.Name = "label11";
+            label11.Size = new Size(76, 21);
+            label11.TabIndex = 16;
+            label11.Text = "Typ stacji:";
+            // 
+            // comboBox5
+            // 
+            comboBox5.DisplayMember = "Value";
+            comboBox5.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox5.Font = new Font("Segoe UI", 12F);
+            comboBox5.FormattingEnabled = true;
+            comboBox5.Location = new Point(134, 171);
+            comboBox5.Name = "comboBox5";
+            comboBox5.Size = new Size(121, 29);
+            comboBox5.TabIndex = 15;
+            comboBox5.ValueMember = "Key";
+            // 
+            // comboBox4
+            // 
+            comboBox4.DisplayMember = "Value";
+            comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox4.Font = new Font("Segoe UI", 12F);
+            comboBox4.FormattingEnabled = true;
+            comboBox4.Location = new Point(142, 221);
+            comboBox4.Name = "comboBox4";
+            comboBox4.Size = new Size(121, 29);
+            comboBox4.TabIndex = 14;
+            comboBox4.ValueMember = "Key";
+            // 
+            // comboBox3
+            // 
+            comboBox3.DisplayMember = "Value";
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox3.Font = new Font("Segoe UI", 12F);
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(134, 73);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 29);
+            comboBox3.TabIndex = 13;
+            comboBox3.ValueMember = "Key";
+            // 
+            // comboBox1
+            // 
+            comboBox1.DisplayMember = "Value";
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.Font = new Font("Segoe UI", 12F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(134, 119);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 29);
+            comboBox1.TabIndex = 12;
+            comboBox1.ValueMember = "Key";
+            // 
+            // comboBox2
+            // 
+            comboBox2.DisplayMember = "Value";
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.Font = new Font("Segoe UI", 12F);
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(134, 27);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 29);
+            comboBox2.TabIndex = 11;
+            comboBox2.ValueMember = "Key";
+            // 
             // button1
             // 
-            button1.Location = new Point(387, 141);
+            button1.Location = new Point(28, 311);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
@@ -439,6 +578,7 @@
             rs232Tab.ResumeLayout(false);
             rs232Tab.PerformLayout();
             modBusTab.ResumeLayout(false);
+            modBusTab.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -477,5 +617,15 @@
         private Label label10;
         private TextBox rsCustomTerBox;
         private Button rsClearBtn;
+        private Label label17;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label11;
+        private ComboBox comboBox5;
+        private ComboBox comboBox4;
+        private ComboBox comboBox3;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
     }
 }

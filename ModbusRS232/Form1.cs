@@ -4,6 +4,24 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static ModbusRS232.RS232.Enums;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+//IWSK - GLIWICE sem.VI Komunikacja na porcie znakowym RS232
+//Sk³ad sekcji 4A (ismip) (wtorek 8:00 t.N):
+//Jakub	Gazda
+//Kamil	Brewczyk
+//Maksymilian Kloc
+//Jakub	Bia³kowski
+//Mykyta Shemechko
+//Pawe³	Pluta
+//Jakub Smajdor
+//Micha³ Brodziak
+//Aleksander Sykulski
+//Jakub	Zaj¹c
+//Jakub	Kromo³owski
+//Konrad Kobielus
+//Micha³ Kulesa
+//Jakub	Skraba
+
 namespace ModbusRS232
 {
     public partial class Form1 : Form
@@ -11,8 +29,11 @@ namespace ModbusRS232
         private readonly IRS232Service service;
         public Form1()
         {
+         
             service = new RS232Service();
             InitializeComponent();
+            this.Text = "IWSK s. 4A";
+            rsResponseBox.ScrollBars = ScrollBars.Vertical;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,6 +71,7 @@ namespace ModbusRS232
                 }
             }).Start();
         }
+  
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -181,6 +203,17 @@ namespace ModbusRS232
         private void rsPingBtn_Click(object sender, EventArgs e)
         {
             service.SendPing();
+        }
+
+        private void controlTab_Selecting_1(object sender, TabControlCancelEventArgs e)
+        {
+            //Wy³aczenie zak³adki dla modbusa
+            if (e.TabPage == controlTab.TabPages["modBusTab"])
+            {
+                
+                e.Cancel = true;
+                MessageBox.Show("Opcja modbus nie zosta³a ukoñczona");
+            }
         }
     }
 }
