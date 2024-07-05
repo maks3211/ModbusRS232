@@ -6,14 +6,13 @@ using static ModbusRS232.RS232.Enums;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 //IWSK - GLIWICE sem.VI Komunikacja na porcie znakowym RS232
-//Sk³ad sekcji 4A (ismip) (wtorek 8:00 t.N):
+//Sk³ad sekcji 7 (4A) - ismip wtorek 8:00 t.N:
 //Jakub	Gazda
 //Kamil	Brewczyk
 //Maksymilian Kloc
 //Jakub	Bia³kowski
 //Mykyta Shemechko
 //Pawe³	Pluta
-//Jakub Smajdor
 //Micha³ Brodziak
 //Aleksander Sykulski
 //Jakub	Zaj¹c
